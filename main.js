@@ -1,8 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
@@ -11,6 +8,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
+    res.redirect("/home");
+});
+
+app.get("/home", (req, res) => {
     res.locals = {
         "featured_content": featured_posts
     };
@@ -47,6 +48,18 @@ app.post("/create_post", (req, res) => {
         content: new_content
     });
     res.redirect("/posts");
+});
+
+app.delete("/delete_post/:id", (req, res) => {
+    const result = posts.filter((post) => post.id === parseInt(req.params.id))[0];
+    let index = posts.indexOf(result);
+    if (index > -1) {
+        posts.splice(index, 1);
+        res.sendStatus(200);
+    }
+    else {
+        res.sendStatus(409);
+    }
 });
 
 app.listen(port, () => {

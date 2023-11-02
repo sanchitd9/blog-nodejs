@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") %>
 
-<section id="single-post" class="mt-5">
-    <div class="container">
+<section id="single-post" class="mt-5 px-3">
+    <div class="container mb-3">
         <img src="images/<%= locals.post.image %>" alt="">
         <div class="inner-card-content">
             <h1><%= locals.post.title %></h1>
@@ -9,7 +9,10 @@
                 <%= locals.post.content %>
             </p>
         </div>
+    </div>
 
+    <div class="container px-3">
+        <button class="btn btn-lg btn-outline-danger btn-block" id="<%= locals.post.id %>">Delete Post</button>
     </div>
 </section>
 
