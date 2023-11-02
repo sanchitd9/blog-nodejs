@@ -10,11 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.locals = {
         "featured_content": featured_posts
-    }
+    };
     res.render("index.ejs");
 });
 
 app.get("/posts", (req, res) => {
+    res.locals = {
+        "all_posts": posts
+    };
     res.render("posts.ejs");
 });
 
