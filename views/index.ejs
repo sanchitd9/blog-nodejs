@@ -1,57 +1,35 @@
 <%- include("partials/header.ejs") %>
 
-<section id="main-content">
+<section id="main-content" class="mb-5">
     <div class="container">
         <h1 class="mb-3 px-1">Featured Content</h1>
-        <div class="row gy-4 pb-4">
-            <div class="col-md-8">
-                <div class="post-content">
-                    <img src="images/image_1.jpg" alt="">
-                    <div class="inner-card-content">
-                        <h2 class="mb-0">Title</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut blanditiis distinctio, earum eveniet facilis hic incidunt laborum libero, minima molestiae necessitatibus odit quae quas, quisquam sequi tempore veniam!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="post-content">
-                    <img src="images/image_2.jpg" alt="">
-                    <div class="inner-card-content">
-                        <h2 class="mb-0">Title</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut blanditiis distinctio, earum eveniet facilis hic incidunt laborum libero, minima molestiae necessitatibus odit quae quas, quisquam sequi tempore veniam!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row gy-4 pb-4">
-            <div class="col-md-8">
-                <div class="post-content">
-                    <img src="images/image_3.jpg" alt="">
-                    <div class="inner-card-content">
-                        <h2 class="mb-0">Title</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut blanditiis distinctio, earum eveniet facilis hic incidunt laborum libero, minima molestiae necessitatibus odit quae quas, quisquam sequi tempore veniam!
-                        </p>
+        <% var total_length = locals.featured_content.length %>
+        <% var num_of_rows = Math.floor(total_length / 2) + total_length % 2 %>
+        <% for (var i = 0; i < num_of_rows; i++) { %>
+            <div class="row gy-4 pb-4">
+                <div class="col-md-8">
+                    <div class="post-content">
+                        <img src="images/<%= locals.featured_content[2 * i].image %>" alt="">
+                        <div class="inner-card-content">
+                            <h2 class="mb-0"><%= locals.featured_content[2 * i].title %></h2>
+                            <p><%= locals.featured_content[2 * i].content.slice(0, 50) %></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="post-content">
-                    <img src="images/image_4.jpg" alt="">
-                    <div class="inner-card-content">
-                        <h2 class="mb-0">Title</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut blanditiis distinctio, earum eveniet facilis hic incidunt laborum libero, minima molestiae necessitatibus odit quae quas, quisquam sequi tempore veniam!
-                        </p>
+                <% if (2 * i + 1 < total_length) { %>
+                    <div class="col-md-4">
+                        <div class="post-content">
+                            <img src="images/<%= locals.featured_content[2 * i + 1].image %>" alt="">
+                            <div class="inner-card-content">
+                                <h2 class="mb-0"><%= locals.featured_content[2 * i + 1].title %></h2>
+                                <p><%= locals.featured_content[2 * i + 1].content.slice(0, 50) %></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <% } %>
             </div>
-        </div>
+        <% } %>
     </div>
 </section>
 

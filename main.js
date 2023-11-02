@@ -8,6 +8,9 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
+    res.locals = {
+        "featured_content": featured_posts
+    }
     res.render("index.ejs");
 });
 
@@ -23,26 +26,32 @@ const lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se
 const posts = [
     {
         image: "image_1.jpg",
+        title: "Title",
         content: lorem_ipsum
     },
     {
         image: "image_2.jpg",
+        title: "Title",
         content: lorem_ipsum
     },
     {
         image: "image_3.jpg",
+        title: "Title",
         content: lorem_ipsum
     },
     {
         image: "image_4.jpg",
+        title: "Title",
         content: lorem_ipsum
     },
     {
         image: "image_5.jpg",
+        title: "Title",
         content: lorem_ipsum
     },
     {
         image: "image_6.jpg",
+        title: "Title",
         content: lorem_ipsum
     }
 ]
