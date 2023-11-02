@@ -9,23 +9,27 @@
         <% for (var i = 0; i < num_of_rows; i++) { %>
             <div class="row gy-4 pb-4">
                 <div class="col-md-8">
-                    <div class="post-content">
-                        <img src="images/<%= locals.featured_content[2 * i].image %>" alt="">
-                        <div class="inner-card-content">
-                            <h2 class="mb-0"><%= locals.featured_content[2 * i].title %></h2>
-                            <p><%= locals.featured_content[2 * i].content.slice(0, 50) %></p>
+                    <a href="/post_<%= locals.featured_content[2 * i].id %>">
+                        <div class="post-content">
+                            <img src="images/<%= locals.featured_content[2 * i].image %>" alt="">
+                            <div class="inner-card-content">
+                                <h2 class="mb-0"><%= locals.featured_content[2 * i].title %></h2>
+                                <p><%= locals.featured_content[2 * i].content.slice(0, 50) %></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <% if (2 * i + 1 < total_length) { %>
                     <div class="col-md-4">
-                        <div class="post-content">
-                            <img src="images/<%= locals.featured_content[2 * i + 1].image %>" alt="">
-                            <div class="inner-card-content">
-                                <h2 class="mb-0"><%= locals.featured_content[2 * i + 1].title %></h2>
-                                <p><%= locals.featured_content[2 * i + 1].content.slice(0, 50) %></p>
+                        <a href="/post_<%= locals.featured_content[2 * i + 1].id %>">
+                            <div class="post-content">
+                                <img src="images/<%= locals.featured_content[2 * i + 1].image %>" alt="">
+                                <div class="inner-card-content">
+                                    <h2 class="mb-0"><%= locals.featured_content[2 * i + 1].title %></h2>
+                                    <p><%= locals.featured_content[2 * i + 1].content.slice(0, 50) %></p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 <% } %>
             </div>

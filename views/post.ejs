@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+
+<section id="single-post" class="mt-5">
+    <div class="container">
+        <img src="images/<%= locals.post.image %>" alt="">
+        <div class="inner-card-content">
+            <h1><%= locals.post.title %></h1>
+            <p>
+                <%= locals.post.content %>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<%- include("partials/footer.ejs") %>

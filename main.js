@@ -1,5 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const port = 3000;
@@ -21,6 +24,14 @@ app.get("/posts", (req, res) => {
     res.render("posts.ejs");
 });
 
+app.get("/post_:id", (req, res) => {
+    const result = posts.filter((post) => post.id === parseInt(req.params.id));
+    res.locals = {
+      "post": result[0]
+    };
+    res.render("post.ejs", );
+});
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
@@ -28,31 +39,37 @@ app.listen(port, () => {
 const lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Senectus et netus et malesuada fames ac turpis. Quisque non tellus orci ac auctor augue mauris. Orci nulla pellentesque dignissim enim. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Elit at imperdiet dui accumsan sit amet nulla facilisi morbi. Feugiat sed lectus vestibulum mattis ullamcorper velit. Facilisi etiam dignissim diam quis enim. Blandit cursus risus at ultrices mi tempus imperdiet. At augue eget arcu dictum varius duis at. Etiam non quam lacus suspendisse. Nulla malesuada pellentesque elit eget gravida cum. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Eget felis eget nunc lobortis. Sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Nisl pretium fusce id velit ut tortor. Nibh sit amet commodo nulla facilisi nullam vehicula ipsum."
 const posts = [
     {
+        id: 1,
         image: "image_1.jpg",
         title: "Title",
         content: lorem_ipsum
     },
     {
+        id: 2,
         image: "image_2.jpg",
         title: "Title",
         content: lorem_ipsum
     },
     {
+        id: 3,
         image: "image_3.jpg",
         title: "Title",
         content: lorem_ipsum
     },
     {
+        id: 4,
         image: "image_4.jpg",
         title: "Title",
         content: lorem_ipsum
     },
     {
+        id: 5,
         image: "image_5.jpg",
         title: "Title",
         content: lorem_ipsum
     },
     {
+        id: 6,
         image: "image_6.jpg",
         title: "Title",
         content: lorem_ipsum
