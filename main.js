@@ -29,7 +29,24 @@ app.get("/post_:id", (req, res) => {
     res.locals = {
       "post": result[0]
     };
-    res.render("post.ejs", );
+    res.render("post.ejs");
+});
+
+app.get("/create", (req, res) => {
+   res.render("create_post.ejs");
+});
+
+app.post("/create_post", (req, res) => {
+    var new_id = posts.length + 1;
+    var new_title = req.body["post-title"]
+    var new_content = req.body["blog-content"];
+    posts.push({
+        id: new_id,
+        image: "image_1.jpg",
+        title: new_title,
+        content: new_content
+    });
+    res.redirect("/posts");
 });
 
 app.listen(port, () => {

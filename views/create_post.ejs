@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<section id="create-post">
+    <div class="container">
+        <h1>New Post</h1>
+        <form action="/create_post" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="post-title">
+            </div>
+            <div class="mb-3">
+                <label for="post" class="form-label">Add your content here:</label>
+                <textarea class="form-control" id="post" rows="15" name="blog-content"></textarea>
+            </div>
+            <input class="btn btn-outline-dark btn-lg btn-block" type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
